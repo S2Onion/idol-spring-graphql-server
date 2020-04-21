@@ -1,0 +1,24 @@
+schema {
+    query: Query
+}
+
+type Query {
+    idol(id: Int, nm: String): Idol
+    selectIdolList: [Idol]
+#    album(ambumId: Int): Album
+}
+
+type Idol{
+    id: Int!
+    nm: String
+    groupId: String
+    groupNm: String
+    age: Int
+    birth: String
+}
+
+#type Album{
+#    albumId: Int!
+#    albumNm: String
+#    albumDesc: String
+#}

@@ -7,3 +7,7 @@ spring:
       driver-class-name: org.postgresql.Driver
   application:
     name: idolSpring
+graphql:
+  spqr:
+    gui:
+      enabled: true

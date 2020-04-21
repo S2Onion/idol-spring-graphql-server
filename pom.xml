@@ -48,6 +48,12 @@
             <artifactId>graphql-java-tools</artifactId>
             <version>5.2.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.leangen.graphql</groupId>
+            <artifactId>graphql-spqr-spring-boot-starter</artifactId>
+            <version>0.0.4</version>
+        </dependency>
+
 
         <!-- lombok -->
         <dependency>
