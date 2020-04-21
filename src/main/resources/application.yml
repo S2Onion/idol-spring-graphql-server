@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url:
+      username:
+      password:
+      driver-class-name: org.postgresql.Driver
+  application:
+    name: idolSpring
