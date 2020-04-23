@@ -3,5 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias type="com.test.idol.vo.IdolGroup" alias="idolGroup"/>
+        <typeAlias type="com.test.idol.vo.IdolMembers" alias="idolMembers"/>
     </typeAliases>
 </configuration>

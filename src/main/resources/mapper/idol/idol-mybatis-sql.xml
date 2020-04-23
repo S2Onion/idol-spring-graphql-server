@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.idol.dao.IdolDao">
+    <select id="selectIdolGroupList" parameterType="idolGroup" resultType="idolGroup">
+        SELECT "ID"       AS id
+             , "GROUP_NM" AS groupNm
+             , "AGENCY"   AS agency
+          FROM tb_idol_group tig
+         WHERE TRUE
+    <if test = 'id != null'>
+           AND tig."ID" = #{id}
+    </if>
+    <if test = 'groupNm != null and !"".equals(groupNm)'>
+            AND tig."GROUP_NM" = #{groupNm}
+    </if>
+         ORDER BY tig."ID" ASC
+    </select>
+
+    <select id="selectIdolInfo" parameterType="idolMembers" resultType="idolMembers">
+        SELECT tim."ID"       AS id
+             , tim."GROUP_ID" AS groupId
+             , tim."IDOL_NM"  AS idolNm
+             , tim."BIRTH"    AS birth
+          FROM tb_idol_members tim
+         WHERE tim."IDOL_NM" = #{idolNm}
+         LIMIT 1
+    </select>
+
+    <select id="selectIdolGroupMembers" parameterType="idolGroup" resultType="idolMembers">
+        SELECT tim."ID"       AS id
+             , tim."GROUP_ID" AS groupId
+             , tim."IDOL_NM"  AS idolNm
+             , tim."BIRTH"    AS birth
+        FROM tb_idol_members tim
+        WHERE tim."GROUP_ID" = #{id}
+        ORDER BY tim."ID" ASC
+    </select>
+</mapper>

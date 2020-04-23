@@ -2,13 +2,12 @@ package com.test.idol.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.test.idol.dao.IdolDao;
-import com.test.idol.vo.Idol;
+import com.test.idol.vo.IdolGroup;
+import com.test.idol.vo.IdolMembers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -18,28 +17,23 @@ public class IdolQueryResolver implements GraphQLQueryResolver {
     @Resource(name = "idolDao")
     private IdolDao idolDao;
 
-    public Idol idol(Integer id, String nm) {
-
-        log.info("id=[" + id +"] nm=[" + nm + "]");
-
-        Idol idol = new Idol();
-        idol.setId(id);
-        idol.setNm(nm);
-        return idol;
+    public IdolMembers selectIdolInfo(String idolNm) throws Exception{
+        IdolMembers paramVO = new IdolMembers();
+        paramVO.setIdolNm(idolNm);
+        return idolDao.selectIdolInfo(paramVO);
     }
 
-    public List<Idol> selectIdolList() {
-        List<Idol> returnList = new ArrayList<>();
-        Idol idol = new Idol();
-        idol.setId(1);
-        idol.setNm("아이유");
-        returnList.add(idol);
+    public List<IdolGroup> selectIdolGroupMembers(Integer id, String groupNm) throws Exception {
+        IdolGroup paramVO  = new IdolGroup();
+        paramVO.setId(id);
+        paramVO.setGroupNm(groupNm);
+        List<IdolGroup> resultList = idolDao.selectIdolGroupList(paramVO);
 
-        idol = new Idol();
-        idol.setId(2);
-        idol.setNm("트와이스");
-        returnList.add(idol);
-
-        return returnList;
+        for(IdolGroup vo : resultList){
+            List<IdolMembers> membersListVO = idolDao.selectIdolGroupMembers(vo);
+            vo.setIdolMembers(membersListVO);
+        }
+        return resultList;
     }
+
 }
