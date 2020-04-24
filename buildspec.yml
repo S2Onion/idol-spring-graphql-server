@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - maven package -Dspring.datasource.hikari.jdbc-url=$ENV:DB_URL -Dspring.datasource.hikari.username=$ENV:DB_ID -Dspring.datasource.hikari.password=$ENV:DB_PASS
+      - mvn package -Dspring.datasource.hikari.jdbc-url=$ENV:DB_URL -Dspring.datasource.hikari.username=$ENV:DB_ID -Dspring.datasource.hikari.password=$ENV:DB_PASS
     finally:
       - echo This always runs even if the install command fails
   post_build:
