@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.idol.dao.IdolDao">
-    <select id="selectIdolGroupList" parameterType="idolGroup" resultType="idolGroup">
+    <select id="selectIdolGroupList" parameterType="idolGroup" resultType="IdolGroup">
         SELECT "ID"       AS id
              , "GROUP_NM" AS groupNm
              , "AGENCY"   AS agency
@@ -27,7 +27,7 @@
          LIMIT 1
     </select>
 
-    <select id="selectIdolGroupMembers" parameterType="idolGroup" resultType="idolMembers">
+    <select id="selectIdolGroupMembers" parameterType="IdolGroup" resultType="idolMembers">
         SELECT tim."ID"       AS id
              , tim."GROUP_ID" AS groupId
              , tim."IDOL_NM"  AS idolNm
@@ -35,5 +35,15 @@
         FROM tb_idol_members tim
         WHERE tim."GROUP_ID" = #{id}
         ORDER BY tim."ID" ASC
+    </select>
+
+    <select id="selectIdolGroupAlbums" parameterType="IdolGroup" resultType="idolAlbums">
+        SELECT tia."ID"       AS id
+             , tia."GROUP_ID" AS groupId
+             , tia."ALBUM_NM" AS albumNm
+             , tia."DETAIL"   AS detail
+          FROM tb_idol_albums tia
+         WHERE tia."GROUP_ID" = #{id}
+         ORDER BY tia."ID" ASC
     </select>
 </mapper>

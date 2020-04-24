@@ -5,5 +5,8 @@
     <typeAliases>
         <typeAlias type="com.test.idol.vo.IdolGroup" alias="idolGroup"/>
         <typeAlias type="com.test.idol.vo.IdolMembers" alias="idolMembers"/>
+        <typeAlias type="com.test.idol.vo.IdolGroupMembers" alias="idolGroupMembers"/>
+        <typeAlias type="com.test.idol.vo.IdolAlbums" alias="idolAlbums"/>
+        <typeAlias type="com.test.idol.vo.IdolGroupAlbums" alias="idolGroupAlbums"/>
     </typeAliases>
 </configuration>

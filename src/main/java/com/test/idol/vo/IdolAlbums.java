@@ -5,10 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class IdolGroup {
+public class IdolAlbums {
 
     private Integer id;
-    private String groupNm;
-    private String agency;
-
+    private Integer groupId;
+    private String albumNm;
+    private String detail;
 }

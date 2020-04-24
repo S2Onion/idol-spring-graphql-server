@@ -3,26 +3,42 @@ schema {
 }
 
 type Query {
-#    selectIdolGroupList(id: Int, groupNm: String): [IdolGroupLimit]
+    selectIdolGroup(id: Int, groupNm: String): [IdolGroup]
     selectIdolInfo(idolNm: String!): IdolMembers
-    selectIdolGroupMembers(id: Int, groupNm: String): [IdolGroup]
-}
-
-type IdolGroupLimit {
-    id: Int
-    groupNm: String
-    agency: String
+    selectIdolGroupMembers(id: Int, groupNm: String): [IdolGroupMembers]
+    selectIdolGroupAlbums(id: Int, groupNm: String): [IdolGroupAlbums]
 }
 
 type IdolGroup {
     id: Int
     groupNm: String
     agency: String
+}
+
+
+type IdolGroupMembers {
+    id: Int
+    groupNm: String
+    agency: String
     idolMembers: [IdolMembers]
 }
 
-type IdolMembers{
+type IdolGroupAlbums {
     id: Int
+    groupNm: String
+    agency: String
+    idolAlbums: [IdolAlbums]
+}
+
+type IdolMembers {
+#    id: Int
     idolNm: String
     birth: String
+}
+
+type IdolAlbums {
+#    id: Int
+#    groupId: Int
+    albumNm: String
+    detail: String
 }
