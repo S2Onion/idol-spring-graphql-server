@@ -4,8 +4,8 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - apt-get update -y
-      - apt-get install -y maven
+     # - apt-get update -y
+     # - apt-get install -y maven
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - mvn install
+      - mvn package
     finally:
       - echo This always runs even if the install command fails
   post_build:
